@@ -1,0 +1,9 @@
+{
+  "project_id": "test-talking-head-ai",
+  "segments": [
+    {"start": 0.0, "end": 2.8, "narration": "Many AI apps borrow their brain.", "semantic_role": "hook", "available_assets": []},
+    {"start": 2.8, "end": 6.4, "narration": "The useful question is how the pieces connect.", "semantic_role": "opinion", "available_assets": []},
+    {"start": 6.4, "end": 10.0, "narration": "The product has three layers.", "semantic_role": "data", "available_assets": []},
+    {"start": 10.0, "end": 13.0, "narration": "Learn to separate interface, model, and connection.", "semantic_role": "recap", "available_assets": []}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "project_id": "test-screencast",
+  "title": "Create a scheduled task",
+  "script": "fixtures/final-script.md",
+  "primary_media": "fixtures/talking-head-raw.mp4",
+  "output": {"width": 1080, "height": 1920, "fps": 30},
+  "assets": [{"id": "screen-1", "path": "fixtures/screen.mp4", "kind": "screencast", "source": "user", "license_or_permission": "user-provided"}],
+  "brand": {},
+  "adapters": {"music": "none", "renderer": "auto", "transcription": "auto"}
+}

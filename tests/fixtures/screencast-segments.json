@@ -1,0 +1,9 @@
+{
+  "project_id": "test-screencast",
+  "segments": [
+    {"start": 0.0, "end": 2.0, "narration": "The AI can start without you asking again.", "semantic_role": "hook", "available_assets": ["real_screencast"]},
+    {"start": 2.0, "end": 7.0, "narration": "Type the schedule in the task box.", "semantic_role": "demonstration", "available_assets": ["real_screencast"], "asset_refs": ["screen-1"]},
+    {"start": 7.0, "end": 10.0, "narration": "The confirmation shows the time and recurrence.", "semantic_role": "evidence", "available_assets": ["real_screencast"], "asset_refs": ["screen-1"], "provenance_refs": ["user capture"]},
+    {"start": 10.0, "end": 13.0, "narration": "Keep notifications enabled.", "semantic_role": "warning", "available_assets": []}
+  ]
+}

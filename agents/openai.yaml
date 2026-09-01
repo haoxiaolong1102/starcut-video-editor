@@ -1,0 +1,5 @@
+interface:
+  display_name: "StarCut"
+  short_description: "语义驱动的真人口播、录屏、绘本与知识视频智能导演工作流"
+  brand_color: "#6C4CFF"
+  default_prompt: "Use $starcut-video-editor to turn my talking-head footage, final script, and optional evidence media into a reviewed 9:16 video project."

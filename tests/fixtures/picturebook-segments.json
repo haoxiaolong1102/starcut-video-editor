@@ -1,0 +1,9 @@
+{
+  "project_id": "test-picturebook",
+  "segments": [
+    {"start": 0.0, "end": 2.5, "narration": "One person cannot play every role well.", "semantic_role": "hook", "available_assets": ["image_generation"]},
+    {"start": 2.5, "end": 7.0, "narration": "One character searches while another checks the numbers.", "semantic_role": "story", "available_assets": ["image_generation"], "continuity_id": "shop-team"},
+    {"start": 7.0, "end": 11.0, "narration": "Their work passes through three clear steps.", "semantic_role": "process", "available_assets": ["image_generation"]},
+    {"start": 11.0, "end": 14.0, "narration": "Now choose one real decision and divide the roles.", "semantic_role": "cta", "available_assets": ["image_generation"]}
+  ]
+}

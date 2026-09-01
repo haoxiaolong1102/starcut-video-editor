@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "project_id": "test-picturebook",
+  "title": "A small shop decision story",
+  "script": "fixtures/final-script.md",
+  "primary_media": "fixtures/voice.wav",
+  "output": {"width": 1080, "height": 1920, "fps": 30},
+  "assets": [],
+  "brand": {},
+  "adapters": {"music": "none", "renderer": "auto", "transcription": "auto"}
+}

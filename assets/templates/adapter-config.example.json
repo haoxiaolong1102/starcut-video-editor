@@ -1,0 +1,17 @@
+{
+  "renderer": "auto",
+  "transcription": "auto",
+  "smoothing": {
+    "level": "SMOOTH_HIGH",
+    "face_model": null
+  },
+  "openchatcut": {
+    "enabled": false,
+    "endpoint": null
+  },
+  "music": {
+    "provider": "none",
+    "local_file": null,
+    "license_or_permission": null
+  }
+}

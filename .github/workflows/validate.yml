@@ -1,0 +1,28 @@
+name: Validate StarCut
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile scripts
+        run: python -m py_compile scripts/*.py tests/run_tests.py
+      - name: Run portable workflow tests
+        run: python tests/run_tests.py
+      - name: Build deterministic package
+        run: python scripts/package_release.py
+      - name: Verify package checksums
+        working-directory: dist
+        run: |
+          sha256sum --check starcut-video-editor.zip.sha256
+          sha256sum --check starcut-video-editor-workbuddy-manual.zip.sha256

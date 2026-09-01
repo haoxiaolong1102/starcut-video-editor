@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "project_id": "test-talking-head-ai",
+  "title": "What makes an AI product",
+  "script": "fixtures/final-script.md",
+  "primary_media": "fixtures/talking-head-raw.mp4",
+  "output": {"width": 1080, "height": 1920, "fps": 30},
+  "assets": [],
+  "brand": {},
+  "adapters": {"music": "none", "renderer": "auto", "transcription": "auto"}
+}

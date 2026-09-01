@@ -1,0 +1,8 @@
+{
+  "status": "no_music",
+  "provider": "none",
+  "file": null,
+  "license_or_permission": null,
+  "duration": null,
+  "notes": "No provider or licensed local file configured; production continues without music."
+}
