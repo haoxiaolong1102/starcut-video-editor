@@ -1,6 +1,10 @@
-# StarCut v0.1.0 Release Candidate
+# StarCut v0.1.0-rc.1
 
 StarCut is a portable Agent Skill for directing and editing vertical, speech-led videos. It turns a final script, a talking-head or voice recording, and optional real media into a clean speech edit, word timeline, semantic SHOTBOOK, evidence-led visual plan, captions, restrained motion, optional skin-only smoothing, and a QA-checked 9:16 master.
+
+Repository: <https://github.com/haoxiaolong1102/starcut-video-editor>
+
+Downloads: [latest release](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [portable Agent Skill ZIP](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor.zip) · [WorkBuddy manual package](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor-workbuddy-manual.zip)
 
 It is not a renderer, a caption-only tool, or a repackaged third-party project. The ZIP contains StarCut's original instructions, schemas, validators, templates, and adapter contracts. FFmpeg, transcription engines, renderers, face models, image generators, and music services remain external.
 

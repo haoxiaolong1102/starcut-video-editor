@@ -9,3 +9,4 @@
 - Added Codex, WorkBuddy, generic-agent, Yuanqi, Doubao, and optional tool adapters.
 - Kept all third-party source, binaries, models, fonts, audio, and visual assets outside the distributable.
 - Added a cross-Agent installer, integrated-capability manifest, and read-only external adapter detector.
+- Published the release candidate as a public GitHub prerelease with portable ZIP packages.

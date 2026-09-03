@@ -28,4 +28,4 @@
 - [ ] Confirm trademark/domain/package-name availability for “StarCut”.
 - [ ] Obtain legal review if distributing commercially or bundling any new third-party material.
 
-No platform upload is authorized by this checklist.
+The project owner explicitly authorized public GitHub publication on 2026-09-03. This checklist does not authorize uploads to any other platform.

@@ -1,6 +1,10 @@
-# StarCut v0.1.0 候选发布版
+# StarCut v0.1.0-rc.1 候选发布版
 
 StarCut 是一套可移植的 Agent Skill，用于导演和剪辑真人口播、AI 科普、Vlog、产品讲解与观点类竖屏视频。
+
+GitHub：<https://github.com/haoxiaolong1102/starcut-video-editor>
+
+下载：[最新发布页](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [通用 Agent Skill 压缩包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor.zip) · [WorkBuddy 手动安装包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor-workbuddy-manual.zip)
 
 它会把最终口播文案、真人视频或配音，以及可选的录屏、截图、图片和 B-roll，整理为：连续口播粗剪、字级时间轴、语义分段、Hook 判断、SHOTBOOK、真实证据优先的视觉规划、字幕、克制动效、可选的仅磨皮处理，以及经过 QA 的 9:16 成片。
 
