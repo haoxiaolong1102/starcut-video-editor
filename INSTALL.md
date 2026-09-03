@@ -37,11 +37,13 @@ The installer refuses to overwrite an existing installation. Pass `--backup-exis
 ## 3. Check capabilities
 
 ```bash
-python3 scripts/starcut_doctor.py
-python3 scripts/detect_adapters.py
+python3 scripts/starcut_doctor.py --project-root /path/to/your/video-project
+python3 scripts/detect_adapters.py --project-root /path/to/your/video-project
 ```
 
 FFmpeg/FFprobe are required for actual media output. OpenChatCut, HyperFrames, Remotion, transcription, smoothing, image generation, and music are optional external adapters. Missing optional adapters never produce fake success.
+
+For production, the Agent must run the speech edit gate, renderer plan/receipts, and caption box-fit gate documented in `SKILL.md`. A successful installation test alone does not mean a video has passed those gates.
 
 ## 4. Verify discovery
 

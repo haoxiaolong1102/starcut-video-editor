@@ -1,10 +1,10 @@
-# StarCut v0.1.0-rc.1
+# StarCut v0.1.0-rc.2
 
 StarCut is a portable Agent Skill for directing and editing vertical, speech-led videos. It turns a final script, a talking-head or voice recording, and optional real media into a clean speech edit, word timeline, semantic SHOTBOOK, evidence-led visual plan, captions, restrained motion, optional skin-only smoothing, and a QA-checked 9:16 master.
 
 Repository: <https://github.com/haoxiaolong1102/starcut-video-editor>
 
-Downloads: [latest release](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [portable Agent Skill ZIP](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor.zip) · [WorkBuddy manual package](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor-workbuddy-manual.zip)
+Downloads: [latest release](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [portable Agent Skill ZIP](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.2/starcut-video-editor.zip) · [WorkBuddy manual package](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.2/starcut-video-editor-workbuddy-manual.zip)
 
 It is not a renderer, a caption-only tool, or a repackaged third-party project. The ZIP contains StarCut's original instructions, schemas, validators, templates, and adapter contracts. FFmpeg, transcription engines, renderers, face models, image generators, and music services remain external.
 
@@ -21,7 +21,7 @@ It is not a renderer, a caption-only tool, or a repackaged third-party project. 
 
 1. Download and unzip `starcut-video-editor.zip`.
 2. Run `python3 scripts/install_starcut.py --agent codex --scope project --project /path/to/project` (or choose WorkBuddy/generic as documented in `INSTALL.md`).
-3. Run `python3 scripts/starcut_doctor.py` and `python3 scripts/detect_adapters.py`.
+3. Run `python3 scripts/starcut_doctor.py --project-root /path/to/video-project` and `python3 scripts/detect_adapters.py --project-root /path/to/video-project`.
 4. Ask the agent to use `starcut-video-editor` and provide the final script plus media paths.
 5. Review the clean speech edit and SHOTBOOK before the full render.
 
@@ -35,4 +35,4 @@ RAW assets are read-only. Music is optional and defaults to no music. StarCut ne
 
 ## Status
 
-`0.1.0-rc.1`: format, routing, schemas, adapters, deterministic validators, packaging, and three representative workflow fixtures are validated. External renderer/API integrations still require environment-specific smoke tests before a production release.
+`0.1.0-rc.2`: adds mandatory executable gates for silence/repetition editing, automatic eligible-Remotion routing with real render receipts, and caption font/line fitting inside designed boxes. External renderer/API integrations still require environment-specific smoke tests before a production release.

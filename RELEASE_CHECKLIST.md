@@ -14,6 +14,9 @@
 - [x] Codex, WorkBuddy manual, generic, Yuanqi, and Doubao adapters
 - [x] A/B/C workflow fixtures
 - [x] deterministic offline ZIP and SHA-256
+- [x] executable silence/word-boundary/repetition gate
+- [x] project-root Remotion detection, automatic advanced-shot routing, and render receipts
+- [x] caption design-box auto-fit and production gate
 
 ## Required before public v0.1.0
 

@@ -1,5 +1,7 @@
 {
   "renderer": "auto",
+  "project_root": "/absolute/path/to/video-project",
+  "remotion_license": "unknown",
   "transcription": "auto",
   "smoothing": {
     "level": "SMOOTH_HIGH",

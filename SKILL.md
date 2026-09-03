@@ -4,7 +4,7 @@ description: Direct and edit semantic-first 9:16 videos from talking-head footag
 license: MIT
 metadata:
   author: StarCut contributors
-  version: "0.1.0-rc.1"
+  version: "0.1.0-rc.2"
 ---
 
 # StarCut Video Editor
@@ -23,6 +23,9 @@ Compatibility: the Agent must be able to read files and run local commands. FFmp
 6. Use an effect only if removing it would make the idea harder to understand.
 7. If an optional dependency or API is missing, choose the documented fallback. Never fabricate a recording, citation, generated image, song, or successful render.
 8. Do not upload media or publish externally without explicit authorization.
+9. Do not begin visual assembly until the speech analysis gate passes and the clean narration derivative exists.
+10. Do not silently ignore a detected, eligible Remotion adapter for Level 2/3 shots; create an explicit render plan and retain successful render receipts.
+11. Do not render captions from guessed CSS sizes. Fit every cue to its actual design box first; overflow is a blocker.
 
 ## Required inputs and safe assumptions
 
@@ -36,7 +39,7 @@ Read [references/input-contract.md](references/input-contract.md) when ingesting
 
 ### 1. Diagnose and preserve
 
-- Run `python3 scripts/starcut_doctor.py --json` from this skill directory.
+- Run `python3 scripts/starcut_doctor.py --json --project-root /path/to/video-project` from this skill directory.
 - Inventory inputs, licenses/provenance, duration, dimensions, frame rate, audio tracks, and intended output.
 - Copy or reference RAW assets without overwriting them.
 - Create the project brief from `assets/templates/PROJECT_BRIEF.md`.
@@ -48,6 +51,16 @@ Read [references/input-contract.md](references/input-contract.md) when ingesting
 - Mark silence, filler, false starts, repeated phrases, misreads, and retakes as edit candidates.
 - Review edit boundaries on both waveform and speech context. Add short audio crossfades where required.
 - Export a continuous clean narration edit before designing visuals.
+
+Run the executable gate rather than merely describing the edit:
+
+```bash
+python3 scripts/prepare_speech_edit.py RAW.mp4 work/speech-analysis.json \
+  --cutlist work/rough-cutlist.json --word-timeline work/words.json
+python3 scripts/render_cutlist.py RAW.mp4 work/rough-cutlist.json work/clean-speech.mp4
+```
+
+If the first command exits with a blocker, resolve word-boundary conflicts and repeated-word candidates before continuing. `render_cutlist.py` refuses an unapproved manifest. Listen through the clean derivative once; visuals and captions must use this cleaned timeline, never RAW timing.
 
 Read [references/talking-head-editing.md](references/talking-head-editing.md). If transcription is unavailable, stop automated word cutting and request/provide a timestamped transcript fallback; do not guess.
 
@@ -92,16 +105,36 @@ Read [references/adapters.md](references/adapters.md). Choose from capabilities 
 
 Core planning and QA remain renderer-neutral. Platform-specific setup belongs in `adapters/`, never in the core workflow.
 
+Save the detector output and create a per-shot renderer plan:
+
+```bash
+python3 scripts/detect_adapters.py --project-root /path/to/video-project > work/adapter-report.json
+python3 scripts/build_render_plan.py work/shotbook.json work/adapter-report.json work/render-plan.json \
+  --remotion-license eligible
+```
+
+Use `eligible` only after the installed Remotion version and the user's use have been checked. When an automatic Level 2/3 shot selects Remotion, build and render it with the external Remotion project and record a successful receipt using `assets/templates/RENDER_RECEIPTS.json`. Planning or HTML mockups are not proof that Remotion ran.
+
 ### 7. Composite, captions, skin, and sound
 
 - Keep face, captions, operating targets, and platform UI unobstructed.
 - Prefer restrained easing, stable holds, and semantic camera moves. Avoid flashing, rapid bouncing, cursor-chasing, and fast local-to-local jumps.
 - Apply skin-only smoothing as a non-destructive derivative. Default `SMOOTH_HIGH`; preserve eyes, eyebrows, eyelashes, lips, nostrils, hairline, beard, face shape, and skin tone. Read [references/smoothing.md](references/smoothing.md).
 - Keep speech intelligible. Use sparse semantic SFX. Music defaults to `NO_MUSIC` unless a licensed local file or configured provider exists.
+- Generate caption cues from `clean-speech.mp4`, define the real designed box for each layout state, and run `python3 scripts/fit_caption_layout.py work/captions.json work/caption-layout.json --box x,y,width,height`. Apply the returned line breaks and font size in the renderer. A cue with `fits: false` must be shortened, reboxed, or restyled before rendering.
 
 ### 8. Render and QA
 
 Render a short proof first when a new adapter, face pipeline, picturebook character, or camera system is used. Then render the final master and run [references/qa-standard.md](references/qa-standard.md). Create `QA_REPORT.md` from the template; unresolved blocking checks mean the deliverable is not complete.
+
+Before calling a video finished, run the mandatory artifact gate:
+
+```bash
+python3 scripts/validate_production.py work/speech-analysis.json work/render-plan.json \
+  work/caption-layout.json --render-receipts work/render-receipts.json
+```
+
+Then run technical media QA. A missing clean-speech approval, missing Remotion/HyperFrames receipt, or caption overflow is a release blocker.
 
 ## Deliverables
 
@@ -109,10 +142,12 @@ Unless the user narrows scope, deliver:
 
 - clean speech master or edit decision list
 - word timeline
+- `speech-analysis.json` and approved reversible cut list
 - project brief
 - `shotbook.json` and `SHOTBOOK.md`
 - source/provenance manifest
 - editable project files for the selected renderer
+- `render-plan.json`, renderer receipts, and `caption-layout.json`
 - final 1080 x 1920 MP4
 - `QA_REPORT.md`
 

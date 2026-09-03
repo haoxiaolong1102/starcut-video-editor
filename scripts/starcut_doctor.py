@@ -47,29 +47,35 @@ def module_info(name: str) -> dict:
     return {"available": spec is not None, "path": getattr(spec, "origin", None)}
 
 
-def local_binary(name: str) -> str | None:
-    candidates = [
-        Path.cwd() / "node_modules" / ".bin" / name,
-        Path.cwd().parent / "node_modules" / ".bin" / name,
-    ]
-    return str(next((p for p in candidates if p.is_file()), "")) or None
+def local_adapter(name: str, project_root: Path) -> tuple[str | None, str | None]:
+    roots = [project_root, project_root / "tools" / "OpenChatCut", project_root.parent, Path.cwd(), Path.cwd().parent]
+    candidates = [root / "node_modules" / ".bin" / name for root in roots]
+    binary = next((p for p in candidates if p.is_file()), None)
+    if binary:
+        return str(binary), "project-command"
+    packages = [root / "node_modules" / name / "package.json" for root in roots]
+    package = next((p for p in packages if p.is_file()), None)
+    return (str(package.parent), "project-package") if package else (None, None)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Probe StarCut dependencies without modifying the system.")
     parser.add_argument("--json", action="store_true", help="Print JSON only")
+    parser.add_argument("--project-root", type=Path, default=Path.cwd(), help="Project containing local node_modules")
     args = parser.parse_args()
+    project_root = args.project_root.expanduser().resolve()
 
     commands = {name: command_info(name) for name in ("ffmpeg", "ffprobe", "python3", "node", "npx")}
     for name in ("hyperframes", "remotion"):
         info = command_info(name)
         if not info["available"]:
-            local = local_binary(name)
-            info.update({"available": bool(local), "path": local})
+            local, kind = local_adapter(name, project_root)
+            info.update({"available": bool(local), "path": local, "kind": kind})
         commands[name] = info
 
     report = {
-        "starcut": "0.1.0-rc.1",
+        "starcut": "0.1.0-rc.2",
+        "project_root": str(project_root),
         "required_ready": commands["ffmpeg"]["available"] and commands["ffprobe"]["available"],
         "commands": commands,
         "python_modules": {name: module_info(name) for name in ("cv2", "mediapipe", "numpy", "whisper")},

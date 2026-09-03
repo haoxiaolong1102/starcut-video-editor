@@ -29,3 +29,9 @@ Every adapter reports `available`, `version`, `path_or_endpoint`, `license_statu
 - music missing → `NO_MUSIC`
 
 Adapter documents live under `adapters/`. They may describe commands but must not vendor third-party source or models.
+
+## Renderer selection contract
+
+Run `detect_adapters.py --project-root <actual-video-project>` so project-local `node_modules/.bin/remotion` is discoverable. Then run `build_render_plan.py` with the SHOTBOOK and detector output.
+
+In `auto` mode, a Level 2/3 semantic shot selects Remotion when the adapter is detected and license status is explicitly `eligible`. It must not be silently replaced by a static HTML mockup. Every selected Remotion or HyperFrames shot requires a successful render receipt pointing to a real output file before final delivery. If Remotion is unavailable or ineligible, record the explicit lower-complexity fallback; never claim it ran.

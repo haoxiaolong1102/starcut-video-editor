@@ -3,9 +3,9 @@
 Project:  
 Clean timeline duration:  
 
-| Shot | Time | Narration meaning | Semantic role | Visual mode | Presenter | Asset/source | Motion level | Why it helps | Fallback |
-|---|---:|---|---|---|---|---|---:|---|---|
-| S001 | 00:00–00:03 |  | hook |  |  |  |  |  | talking_head |
+| Shot | Time | Narration meaning | Semantic role | Visual mode | Presenter | Asset/source | Motion level | Preferred renderer | Why it helps | Fallback |
+|---|---:|---|---|---|---|---|---:|---|---|---|
+| S001 | 00:00–00:03 |  | hook |  |  |  |  |  |  | talking_head |
 
 ## Hook review
 
@@ -17,6 +17,9 @@ Clean timeline duration:
 
 - Presenter framing:
 - Caption safe zone:
+- Caption box states:
+- Remotion license status:
+- Renderer receipt path:
 - Screen Focus targets:
 - Picturebook continuity IDs:
 - Audio/SFX plan:

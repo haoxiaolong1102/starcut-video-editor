@@ -1,10 +1,10 @@
-# StarCut v0.1.0-rc.1 候选发布版
+# StarCut v0.1.0-rc.2 候选发布版
 
 StarCut 是一套可移植的 Agent Skill，用于导演和剪辑真人口播、AI 科普、Vlog、产品讲解与观点类竖屏视频。
 
 GitHub：<https://github.com/haoxiaolong1102/starcut-video-editor>
 
-下载：[最新发布页](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [通用 Agent Skill 压缩包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor.zip) · [WorkBuddy 手动安装包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.1/starcut-video-editor-workbuddy-manual.zip)
+下载：[最新发布页](https://github.com/haoxiaolong1102/starcut-video-editor/releases/latest) · [通用 Agent Skill 压缩包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.2/starcut-video-editor.zip) · [WorkBuddy 手动安装包](https://github.com/haoxiaolong1102/starcut-video-editor/releases/download/v0.1.0-rc.2/starcut-video-editor-workbuddy-manual.zip)
 
 它会把最终口播文案、真人视频或配音，以及可选的录屏、截图、图片和 B-roll，整理为：连续口播粗剪、字级时间轴、语义分段、Hook 判断、SHOTBOOK、真实证据优先的视觉规划、字幕、克制动效、可选的仅磨皮处理，以及经过 QA 的 9:16 成片。
 
@@ -15,7 +15,7 @@ StarCut 不是单一渲染器，也不是给第三方项目改名。离线 ZIP �
 1. 下载并解压 `starcut-video-editor.zip`。
 2. Codex 项目级安装：`python3 scripts/install_starcut.py --agent codex --scope project --project /你的项目路径`。
 3. WorkBuddy 用户级安装：`python3 scripts/install_starcut.py --agent workbuddy --scope user`。
-4. 执行 `python3 scripts/starcut_doctor.py` 和 `python3 scripts/detect_adapters.py`。
+4. 执行 `python3 scripts/starcut_doctor.py --project-root /视频项目路径` 和 `python3 scripts/detect_adapters.py --project-root /视频项目路径`。
 5. 告诉 Agent 使用 `starcut-video-editor`，并提供最终文案和素材路径。
 6. 先确认口播粗剪和 SHOTBOOK，再渲染完整视频。
 
@@ -34,4 +34,4 @@ StarCut 不是单一渲染器，也不是给第三方项目改名。离线 ZIP �
 
 ## 当前状态
 
-`0.1.0-rc.1` 已完成格式、路由、结构、验证器、打包器和三类代表性流程夹具验证。不同机器上的第三方渲染器与 API 仍需在正式发布前分别做冒烟测试。
+`0.1.0-rc.2` 新增三道强制执行门槛：自动检测停顿并复核重复口播、检测到且许可证确认的 Remotion 自动承担 Level 2/3 镜头并留下真实渲染凭据、字幕按实际设计框自动计算字号和断行。不同机器上的第三方渲染器与 API 仍需在正式发布前分别做冒烟测试。

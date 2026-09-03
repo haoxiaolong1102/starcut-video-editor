@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import argparse
 import json
 import os
 import shutil
@@ -13,14 +14,24 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def command(name: str) -> dict:
+def command(name: str, project_root: Path | None = None) -> dict:
     path = shutil.which(name)
+    kind = "command" if path else None
     if not path:
-        for candidate in (Path.cwd() / "node_modules" / ".bin" / name, Path.cwd().parent / "node_modules" / ".bin" / name):
+        roots = [root for root in (project_root, project_root / "tools" / "OpenChatCut" if project_root else None, Path.cwd(), Path.cwd().parent) if root]
+        candidates = [root / "node_modules" / ".bin" / name for root in roots]
+        for candidate in candidates:
             if candidate.is_file():
                 path = str(candidate)
+                kind = "project-command"
                 break
-    return {"available": bool(path), "path": path}
+        if not path and name in {"remotion", "hyperframes"}:
+            packages = [root / "node_modules" / name / "package.json" for root in roots]
+            package = next((candidate for candidate in packages if candidate.is_file()), None)
+            if package:
+                path = str(package.parent)
+                kind = "project-package"
+    return {"available": bool(path), "path": path, "kind": kind}
 
 
 def module(name: str) -> dict:
@@ -28,9 +39,10 @@ def module(name: str) -> dict:
     return {"available": spec is not None, "path": getattr(spec, "origin", None)}
 
 
-def openchatcut() -> dict:
+def openchatcut(project_root: Path) -> dict:
     candidates = [
         os.getenv("STARCUT_OPENCHATCUT_PATH"),
+        str(project_root / "tools" / "OpenChatCut"),
         str(Path.cwd() / "tools" / "OpenChatCut"),
         str(Path.home() / "OpenChatCut"),
         "/Applications/OpenChatCut.app",
@@ -45,11 +57,15 @@ def openchatcut() -> dict:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Detect external StarCut adapters without installing anything.")
+    parser.add_argument("--project-root", type=Path, default=Path.cwd(), help="Project containing local node_modules")
+    args = parser.parse_args()
+    project_root = args.project_root.expanduser().resolve()
     report = {
-        "core": {"starcut": "0.1.0-rc.1", "skill_root": str(ROOT)},
-        "required": {"ffmpeg": command("ffmpeg"), "ffprobe": command("ffprobe")},
-        "renderers": {"hyperframes": command("hyperframes"), "remotion": command("remotion")},
-        "timeline": {"openchatcut": openchatcut()},
+        "core": {"starcut": "0.1.0-rc.2", "skill_root": str(ROOT), "project_root": str(project_root)},
+        "required": {"ffmpeg": command("ffmpeg", project_root), "ffprobe": command("ffprobe", project_root)},
+        "renderers": {"hyperframes": command("hyperframes", project_root), "remotion": command("remotion", project_root)},
+        "timeline": {"openchatcut": openchatcut(project_root)},
         "transcription": {"whisper": module("whisper")},
         "smoothing": {name: module(name) for name in ("cv2", "mediapipe", "numpy")},
         "music": {

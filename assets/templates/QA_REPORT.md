@@ -9,6 +9,7 @@
 ## Editorial
 
 - [ ] Silence, stumbles, false starts, repeats removed
+- [ ] Speech analysis gate PASS; clean narration timeline used
 - [ ] Cuts and breathing sound natural
 - [ ] Final script matches speech
 - [ ] First 3 seconds provide a viewing reason
@@ -19,6 +20,7 @@
 - [ ] Evidence and data have provenance
 - [ ] Face, captions, UI, and targets are unobstructed
 - [ ] Chinese text fits mobile safe areas
+- [ ] Caption layout manifest PASS; rendered font/lines match it
 - [ ] Screen Focus targets are accurate and stable
 - [ ] Picturebook/collage continuity is consistent
 - [ ] No black frame, flash, accidental freeze, or excessive effect
@@ -36,6 +38,7 @@
 - [ ] 1080 x 1920 unless approved otherwise
 - [ ] H.264/AAC streams verified
 - [ ] Full decode/playback completed
+- [ ] Selected Remotion/HyperFrames shots have successful render receipts
 
 ## Findings
 

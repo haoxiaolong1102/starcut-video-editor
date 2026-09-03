@@ -1,0 +1,6 @@
+{
+  "renderers": {
+    "remotion": {"available": true, "path": "/test/node_modules/.bin/remotion"},
+    "hyperframes": {"available": true, "path": "/test/bin/hyperframes"}
+  }
+}

@@ -18,4 +18,4 @@ Use $starcut-video-editor to inspect my script and RAW video, create a clean nar
 
 If the Codex installation supports user skills, place the folder under its configured user Skill directory (commonly `~/.codex/skills/starcut-video-editor/`). Project-level installation remains the most portable choice.
 
-Run `python3 scripts/starcut_doctor.py` from the installed Skill folder. Do not upload the Skill through an API unless the user explicitly asks for that distribution method.
+Run `python3 scripts/starcut_doctor.py --project-root /path/to/video-project` from the installed Skill folder. Do not upload the Skill through an API unless the user explicitly asks for that distribution method.

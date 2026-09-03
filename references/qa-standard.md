@@ -3,6 +3,7 @@
 ## Editorial
 
 - stumbles, false starts, duplicate wording, and perceptible empty gaps removed
+- `speech-analysis.json` reports `approved_for_visuals: true`; visual timing uses the clean narration master
 - cuts sound continuous and retain natural breathing
 - final script and spoken content agree
 - first three seconds provide a concrete viewing reason
@@ -19,6 +20,7 @@
 
 - face, captions, software targets, and UI are not obstructed
 - Chinese text fits and remains readable on a phone
+- every caption has a passing box-fit record and the renderer uses its calibrated line breaks/font size
 - Screen Focus targets are correct; zoom is stable and not dizzying
 - picturebook character, wardrobe, palette, scene, and direction remain consistent
 - no black frames, accidental frozen frames, flashing, rapid bounce, or prolonged unreadable shot
@@ -42,7 +44,10 @@
 - valid H.264 video and AAC audio by default
 - duration, frame rate, streams, and decode are verified with FFprobe/FFmpeg
 - final file opens and plays through; no missing external asset
+- every Remotion/HyperFrames shot selected by `render-plan.json` has a successful receipt and real output
 
 Use `assets/templates/QA_REPORT.md`. Any unresolved item marked `BLOCKER` prevents release.
 
 Run `python3 scripts/qa_media.py path/to/final.mp4 --decode` for technical stream and full-decode checks. This complements, but never replaces, human editorial and visual review.
+
+Run `scripts/validate_production.py` before technical QA. Its three gates—speech edit, renderer receipts, and caption fit—must pass. Do not convert a failed gate into a note.

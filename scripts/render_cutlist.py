@@ -27,6 +27,11 @@ def main() -> int:
     if not args.input.is_file() or not args.cutlist.is_file():
         raise SystemExit("Input media or cut list does not exist.")
     data = json.loads(args.cutlist.read_text(encoding="utf-8"))
+    if data.get("source") and Path(data["source"]).resolve() != args.input.resolve():
+        raise SystemExit("Cut list source does not match the supplied RAW input.")
+    review = data.get("review", {})
+    if review.get("status") != "PASS":
+        raise SystemExit("Cut list is not approved. Run prepare_speech_edit.py and resolve its speech review blockers first.")
     segments = data.get("segments", [])
     if not segments:
         raise SystemExit("Cut list contains no keep segments.")

@@ -33,7 +33,7 @@ Optional:
 - `provenance_refs`: citations, capture notes, or permissions.
 - `screen_focus`: `{state, target, zoom, hold}`.
 - `on_screen_text`: short text, never a transcript dump.
-- `caption_style`, `sfx`, `music`, `transition_in`, `transition_out`, `qa_notes`.
+- `caption_style`, `caption_box`, `preferred_renderer`, `sfx`, `music`, `transition_in`, `transition_out`, `qa_notes`.
 
 ## Invariants
 
@@ -43,3 +43,5 @@ Optional:
 - Evidence claims require an asset/provenance reference or a visible `source pending` QA blocker.
 - Picturebook sequences share a continuity ID and asset bible.
 - Music may be `none`; a provider name without a rendered/licensed file is invalid.
+- A renderer plan created from the final SHOTBOOK records the actual renderer for every shot; selected Remotion/HyperFrames shots require render receipts.
+- `caption_box` is measured in final-frame coordinates and must pass the caption layout fitter.

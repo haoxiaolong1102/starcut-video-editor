@@ -7,16 +7,16 @@ StarCut is one installable Skill package, not a renamed collection of third-part
 | Capability | Origin | Delivery |
 |---|---|---|
 | semantic-first editing workflow | StarCut original, generalized from the creator's verified Xingjue production workflow | core `SKILL.md` and references |
-| talking-head silence/repetition workflow | StarCut original | instructions + reversible FFmpeg cut-list renderer |
+| talking-head silence/repetition workflow | StarCut original | FFmpeg silence analyzer + word-boundary/repetition gate + reversible cut-list renderer |
 | SMART VISUAL ROUTER | StarCut original | deterministic router + schema |
 | SHOTBOOK | StarCut original | JSON/Markdown contract + validator |
 | Screen Focus | StarCut original | FULL VIEW / ZOOM / HOLD / RETURN director rules |
 | picturebook/collage continuity | StarCut original | continuity bible and limited-motion rules |
 | kinetic type, data, flow, parallax, mask, morph, 3D routing | StarCut original behavior contracts | renderer-neutral effect library |
-| presenter and captions | StarCut original | framing, caption and safe-zone rules |
+| presenter and captions | StarCut original | framing rules + automatic caption box/font/line fitter |
 | skin-only smoothing | StarCut original implementation | optional OpenCV/MediaPipe script; no model bundled |
 | optional music interface | StarCut original | provider-neutral contract; `NO_MUSIC` fallback |
-| media and project QA | StarCut original | validators, FFprobe/full-decode QA and templates |
+| media and project QA | StarCut original | speech/render/caption production gates, FFprobe/full-decode QA and templates |
 | cross-Agent installation | StarCut original | Codex, WorkBuddy and custom-directory installer |
 
 ## Detected and called, but not copied

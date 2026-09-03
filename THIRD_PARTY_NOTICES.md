@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-StarCut v0.1.0-rc.1 does **not** bundle third-party source code, executables, models, fonts, stock media, sound effects, or music. Its MIT license applies only to StarCut-original files.
+StarCut v0.1.0-rc.2 does **not** bundle third-party source code, executables, models, fonts, stock media, sound effects, or music. Its MIT license applies only to StarCut-original files.
 
 The following optional external software may be detected or called when separately installed by the user. Each remains governed by its own license and terms:
 

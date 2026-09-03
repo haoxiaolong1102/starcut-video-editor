@@ -1,0 +1,2 @@
+[silencedetect @ test] silence_start: 1.600
+[silencedetect @ test] silence_end: 2.800 | silence_duration: 1.200

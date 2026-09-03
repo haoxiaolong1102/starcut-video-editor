@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.2",
+  "receipts": [
+    {
+      "shot_id": "S001",
+      "renderer": "remotion",
+      "status": "success",
+      "output": "/absolute/path/to/rendered-shot.mp4",
+      "command_or_project": "editable Remotion project or exact render command",
+      "verified_at": "YYYY-MM-DDTHH:MM:SSZ"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 {
+  "schema_version": "0.2",
+  "review": {"status": "PASS", "notes": "fixture reviewed"},
   "segments": [
     {"source_in": 0.2, "source_out": 1.1, "reason": "keep first phrase"},
     {"source_in": 1.6, "source_out": 2.7, "reason": "remove middle pause"}

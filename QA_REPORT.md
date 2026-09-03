@@ -1,8 +1,8 @@
-# StarCut v0.1.0-rc.1 QA Report
+# StarCut v0.1.0-rc.2 QA Report
 
-Date: 2026-09-01  
-Scope: portable Skill package, deterministic routing/schema tests, dependency detection, and prior representative render evidence.  
-Result: **PASS WITH NOTES — Release Candidate, not final public release**
+Date: 2026-09-03
+Scope: portable Skill package, speech-edit gate, deterministic renderer routing, caption box fitting, schema tests, dependency detection, and prior representative render evidence.
+Result: **PASS WITH NOTES — Public prerelease, not stable v0.1.0**
 
 ## Format and package
 
@@ -14,6 +14,11 @@ Result: **PASS WITH NOTES — Release Candidate, not final public release**
 - PASS — a synthetic 1080 x 1920 H.264/AAC source was cut from two keep segments by `render_cutlist.py`; the derivative fully decoded without errors.
 - PASS — the cross-Agent installer copied a clean Skill into an isolated generic Agent directory without `dist`, `.git`, caches, or vendor dependencies.
 - PASS — external adapter detection reports actual availability and preserves `NO_MUSIC`/other fallbacks without installing anything.
+- PASS — silence-log fixture removes a verified 1.04-second non-speaking interval while preserving adjacent word spans.
+- PASS — unapproved word boundaries or repeated-word review block cut-list rendering and visual assembly.
+- PASS — a Level 2 data shot automatically selects detected, explicitly eligible Remotion.
+- PASS — multilingual captions are automatically sized and line-broken inside the declared design box and mobile safe area.
+- PASS — the production validator requires clean-speech approval, actual renderer receipts, and passing caption layout before delivery.
 
 ## Test A — Talking-head AI knowledge explainer
 
@@ -44,7 +49,7 @@ Result: **PASS WITH NOTES — Release Candidate, not final public release**
 
 - PASS — FFmpeg 8.0.1 and FFprobe 8.0.1 detected.
 - PASS — Node.js and `npx` detected.
-- EXPECTED FALLBACK — no global HyperFrames or Remotion command detected by the read-only doctor.
+- PASS — project-root detection finds the external Remotion package used by the local OpenChatCut installation; no global HyperFrames command is present.
 - EXPECTED FALLBACK — main Python environment lacks MediaPipe and Whisper; `SMOOTH_OFF` and external/user-supplied word timeline are required until configured.
 - PASS — no music provider/API key detected; fallback is `NO_MUSIC` and production remains unblocked.
 
@@ -63,4 +68,4 @@ The Skill correctly treats unresolved items as project blockers rather than clai
 
 ## RC decision
 
-StarCut v0.1.0-rc.1 passes portable format, original-rule boundary, deterministic router, three representative workflow fixtures, dependency fallback, and packaging tests. Before `v0.1.0` final/public publication, perform fresh end-to-end renders on a clean machine for each chosen external adapter and resolve client-specific import verification.
+StarCut v0.1.0-rc.2 passes portable format, original-rule boundary, deterministic router, the three reported production gates, representative workflow fixtures, dependency fallback, and packaging tests. Before stable `v0.1.0`, perform fresh end-to-end renders on a clean machine for each chosen external adapter and resolve client-specific import verification.
